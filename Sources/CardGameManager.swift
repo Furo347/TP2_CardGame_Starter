@@ -83,7 +83,65 @@ final class CardGameManager {
             hand.append(card)
         }
     }
-    // - Class Game (7 pts)
+    
+    class Game {
+        var player1: Player
+        var player2: Player
+        var deck: Deck
+
+        init(player1: Player, player2: Player) {
+            self.player1 = player1
+            self.player2 = player2
+            self.deck = Deck()
+        }
+
+        func dealCards() {
+            deck.shuffle()
+            while let card = deck.draw() {
+                if player1.hand.count <= player2.hand.count {
+                    player1.receiveCard(card)
+                } else {
+                    player2.receiveCard(card)
+                }
+            }
+        }
+
+        func playRound() {
+            var card1 = player1.playCard()
+            var card2 = player2.playCard()
+            print("\(player1.name) plays: \(card1?.description ?? "No card")")
+            print("\(player2.name) plays: \(card2?.description ?? "No card")")
+
+            if let c1 = card1, let c2 = card2 {
+                if c1 > c2 {
+                    player1.score += 1
+                    print("\(player1.name) wins the round!\n")
+                } else if c2 > c1 {
+                    player2.score += 1
+                    print("\(player2.name) wins the round!\n")
+                } else {
+                    print("It's a War!\n") 
+                    //Dans le cas d'égalité, chaque joueur doit poser 3 cartes face cachées et une carte face visible. Le joueur avec la carte visible la plus haute remporte la manche. Si les cartes visibles sont à nouveau égales, le processus se répète jusqu'à ce qu'un gagnant soit déterminé.
+                }
+            }  
+        }
+       
+        func play() {
+            dealCards()
+            while !player1.hand.isEmpty && !player2.hand.isEmpty {
+                playRound()
+            }
+            print("Final Scores: \(player1.name): \(player1.score), \(player2.name): \(player2.score)")
+            if player1.score > player2.score {
+                print("\(player1.name) wins the game!")
+            } else if player2.score > player1.score {
+                print("\(player2.name) wins the game!")
+            } else {
+                print("The game is a tie!")
+            }
+        }
+    }
+    
     // - Extensions Array<Card> (2 pts)
 
     func run() {

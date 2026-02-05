@@ -46,6 +46,6 @@ struct Card: Comparable {
     }
 
     static func < (lhs: Card, rhs: Card) -> Bool {
-         return false
+         return lhs.rank < rhs.rank
     }
 }
