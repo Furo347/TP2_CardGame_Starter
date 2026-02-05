@@ -10,7 +10,34 @@ final class CardGameManager {
     private init() {}
 
     // TODO: 3-7. Implémenter les autres composants
-    // - Class Deck (3 pts)
+    class Deck {
+        var cards: [Card] = []
+
+        init() {
+            for suit in Suit.allCases {
+                for rank in Rank.allCases {
+                    cards.append(Card(rank: rank, suit: suit))
+                }
+            }
+        }
+
+        func shuffle() {
+            cards.shuffle()
+        }
+
+        func draw() -> Card? {
+            return cards.popLast()
+        }
+
+        func reset() {
+            cards.removeAll()
+            for suit in Suit.allCases {
+                for rank in Rank.allCases {
+                    cards.append(Card(rank: rank, suit: suit))
+                }
+            }
+        }
+    }
     // - Protocol Player (2 pts)
     // - Classes HumanPlayer/AIPlayer (2 pts)
     // - Class Game (7 pts)
