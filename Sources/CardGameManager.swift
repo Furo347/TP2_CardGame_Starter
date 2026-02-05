@@ -112,11 +112,15 @@ final class CardGameManager {
                     player2.receiveCard(card)
                 }
             }
+            print("Dealing cards...\n")
+            print("\(player1.name) received \(player1.hand.count) cards")
+            print("\(player2.name) received \(player2.hand.count) cards\n")
         }
 
         func playRound() {
-            var card1 = player1.playCard()
-            var card2 = player2.playCard()
+            print("--Round \(player1.score + player2.score + 1) --")
+            let card1 = player1.playCard()
+            let card2 = player2.playCard()
             print("\(player1.name) plays: \(card1?.description ?? "No card")")
             print("\(player2.name) plays: \(card2?.description ?? "No card")")
 
@@ -131,7 +135,8 @@ final class CardGameManager {
                     print("It's a War!\n") 
                     //Dans le cas d'égalité, chaque joueur doit poser 3 cartes face cachées et une carte face visible. Le joueur avec la carte visible la plus haute remporte la manche. Si les cartes visibles sont à nouveau égales, le processus se répète jusqu'à ce qu'un gagnant soit déterminé.
                 }
-            }  
+            }
+            print("Scores: \(player1.name): \(player1.score), \(player2.name): \(player2.score)\n")  
         }
        
         func play() {
