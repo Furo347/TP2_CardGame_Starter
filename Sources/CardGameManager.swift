@@ -3,13 +3,21 @@
 
 import Foundation
 
-// Game Manager avec singleton pattern
+extension Array where Element == Card {
+    func highest() -> Card? {
+        return self.max()
+    }
+
+    var description: String {
+        return self.map { $0.description }.joined(separator: ", ")
+    }
+}
+
 final class CardGameManager {
     static let shared = CardGameManager()
 
     private init() {}
 
-    // TODO: 3-7. Implémenter les autres composants
     class Deck {
         var cards: [Card] = []
 
@@ -141,19 +149,16 @@ final class CardGameManager {
             }
         }
     }
-    
-    // - Extensions Array<Card> (2 pts)
 
     func run() {
         print("Card Game: War")
         print("=================\n")
 
-        // TODO: Créer deux joueurs
-        // let player1 = HumanPlayer(name: "Alice")
-        // let player2 = AIPlayer(name: "Bob")
+        let player1 = HumanPlayer(name: "Alice")
+        let player2 = AIPlayer(name: "Bob")
 
-        // TODO: Créer et lancer une partie
-        // let game = Game(player1: player1, player2: player2)
-        // game.play()
+        let game = Game(player1: player1, player2: player2)
+        game.play()
     }
+
 }
