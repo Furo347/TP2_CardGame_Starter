@@ -3,9 +3,6 @@
 
 import Foundation
 
-// 1. ENUMS (1 point)
-// Code fourni - Décommenter et compléter
-
 enum Suit: String, CaseIterable {
     case hearts = "♥️"
     case diamonds = "♦️"

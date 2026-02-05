@@ -38,7 +38,16 @@ final class CardGameManager {
             }
         }
     }
-    // - Protocol Player (2 pts)
+    
+    protocol Player : AnyObject {
+        var name: String { get }
+        var hand: [Card] { get set }
+        var score: Int { get set }
+        
+        func playCard() -> Card?
+        func receiveCard(_ card: Card)
+    }
+    
     // - Classes HumanPlayer/AIPlayer (2 pts)
     // - Class Game (7 pts)
     // - Extensions Array<Card> (2 pts)
