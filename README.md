@@ -1,3 +1,9 @@
+Portets Florentin M2 Développement Web
+
+Classe B
+
+######
+
 # TP2 - Card Game System
 
 ## Objectif
