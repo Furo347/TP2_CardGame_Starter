@@ -39,19 +39,16 @@ enum Rank: Int, CaseIterable, Comparable {
     }
 }
 
-// 2. STRUCT CARD (2 points)
-// TODO: Implémenter la structure Card
 
-// struct Card: Comparable {
-//     // TODO: Ajouter les propriétés rank et suit
-//
-//     // TODO: Computed property description qui retourne "Ace of ♠️"
-//     var description: String {
-//         return ""
-//     }
-//
-//     // TODO: Implémenter Comparable (comparer par rank)
-//     static func < (lhs: Card, rhs: Card) -> Bool {
-//         return false
-//     }
-// }
+struct Card: Comparable {
+    var rank: Rank
+    var suit: Suit  
+
+    var description: String {
+        return "\(rank.name) of \(suit.rawValue)"
+    }
+
+    static func < (lhs: Card, rhs: Card) -> Bool {
+         return false
+    }
+}
