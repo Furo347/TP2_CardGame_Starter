@@ -47,8 +47,42 @@ final class CardGameManager {
         func playCard() -> Card?
         func receiveCard(_ card: Card)
     }
-    
-    // - Classes HumanPlayer/AIPlayer (2 pts)
+
+    class HumanPlayer: Player {
+        var name: String
+        var hand: [Card] = []
+        var score: Int = 0
+
+        init(name: String) {
+            self.name = name
+        }
+
+        func playCard() -> Card? {
+            return hand.isEmpty ? nil : hand.removeFirst()
+        }
+
+        func receiveCard(_ card: Card) {
+            hand.append(card)
+        }
+    }
+
+    class AIPlayer: Player {
+        var name: String
+        var hand: [Card] = []
+        var score: Int = 0
+
+        init(name: String) {
+            self.name = name
+        }
+
+        func playCard() -> Card? {
+            return hand.isEmpty ? nil : hand.removeFirst()
+        }
+
+        func receiveCard(_ card: Card) {
+            hand.append(card)
+        }
+    }
     // - Class Game (7 pts)
     // - Extensions Array<Card> (2 pts)
 
